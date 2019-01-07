@@ -9,3 +9,9 @@ build:
     - internal/docker-build:
         dockerfile: Dockerfile
         image-name: ubuntu-docker
+    - internal/docker-push:
+        image-name: ubuntu-docker
+        username: $DOCKERHUB_USER
+        password: $DOCKERHUB_PASSWORD
+        registry: https://hub.docker.com
+        repository: $DOCKERHUB_USER/ubuntu-docker

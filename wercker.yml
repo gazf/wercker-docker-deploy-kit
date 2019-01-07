@@ -1,0 +1,11 @@
+
+box: debian:jessie
+
+build:
+  steps:
+    - script:
+        code: |
+          echo "test"
+    - internal/docker-build:
+        dockerfile: Dockerfile
+        image-name: ubuntu-docker

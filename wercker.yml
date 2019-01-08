@@ -11,7 +11,6 @@ build:
         code: |
           #service docker start
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
-          docker build --tag="ubuntu-docker:latest" .
-          docker tag ubuntu-docker:latest ubuntu-docker:latest
-          docker push ubuntu-docker:latest
+          docker build --tag="gazf/ubuntu-docker" .
+          docker push gazf/ubuntu-docker
           

@@ -6,10 +6,20 @@ build:
   steps:
     - script:
         code: |
-          export AA="aaa"
-          echo $AA
-          apk add --update --no-cache nodejs nodejs-npm
+          apk add --update --no-cache nodejs
+          export DOCKER_IMAGE_NAME="$(node -p "require('./package.json').docker.name")"
+          export DOCKER_IMAGE_TAG="$(node -p "require('./package.json').docker.tag")"
+          export DOCKER_IMAGE="$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
+          
+          # Check
+          echo $DOCKER_IMAGE
+          
+          # Login
           echo $DOCKERHUB_PASSWORD | docker login --username="$DOCKERHUB_USERNAME" --password-stdin
-          docker build --tag="$DOCKERHUB_USERNAME/$(node -p "require('./package.json').docker.name"):$(node -p "require('./package.json').docker.tag")" .
-          docker push $DOCKERHUB_USERNAME/$(node -p "require('./package.json').docker.name"):$(node -p "require('./package.json').docker.tag")
+          
+          # Build
+          docker build --tag="$DOCKER_IMAGE" .
+          
+          # Push
+          docker push $DOCKER_IMAGE
           

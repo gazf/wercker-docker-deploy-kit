@@ -1,5 +1,9 @@
 {
   "name": "ubuntu-docker",
   "description": "hexo environment",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "docker": {
+    "name": "ubuntu-docker",
+    "tag": "0.0.1"
+  }
 }

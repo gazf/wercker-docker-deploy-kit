@@ -1,6 +1,6 @@
 {
-  "name": "ubuntu-docker",
-  "description": "hexo environment",
+  "name": "werkcer-docker-deploy-kit",
+  "description": "werkcer Docker Deploy Kit",
   "version": "0.0.1",
   "docker": {
     "name": "ubuntu-docker",

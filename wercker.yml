@@ -14,5 +14,6 @@ build:
         code: |
           #service docker start
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
+          docker tag ubuntu-docker:latest ubuntu-docker:latest
           docker push ubuntu-docker:latest
           

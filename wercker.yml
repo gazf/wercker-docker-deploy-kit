@@ -4,11 +4,15 @@ build:
   docker: true
   steps:
     - script:
+        name: Install Nodejs
+        code: apk add --update --no-cache nodejs
+    - script:
         code: |
-          apk add --update --no-cache nodejs
           export DOCKER_IMAGE_NAME="$(node -p "require('./package.json').docker.name")"
           export DOCKER_IMAGE_TAG="$(node -p "require('./package.json').docker.tag")"
           export DOCKER_IMAGE="$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
+    - script:
+        code: |
           echo $DOCKER_IMAGE
           
           echo $DOCKERHUB_PASSWORD | docker login --username="$DOCKERHUB_USERNAME" --password-stdin

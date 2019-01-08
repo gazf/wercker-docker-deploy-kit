@@ -7,13 +7,11 @@ build:
     - script:
         code: |
           echo "test"
-    - internal/docker-build:
-        dockerfile: Dockerfile
-        image-name: ubuntu-docker
     - script:
         code: |
           #service docker start
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
+          docker build --tag="ubuntu-docker:latest"
           docker tag ubuntu-docker:latest ubuntu-docker:latest
           docker push ubuntu-docker:latest
           

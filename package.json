@@ -3,7 +3,7 @@
   "description": "werkcer Docker Deploy Kit",
   "version": "0.0.1",
   "docker": {
-    "name": "ubuntu-docker",
+    "name": "test",
     "tag": "0.0.1"
   }
 }

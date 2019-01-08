@@ -1,5 +1,5 @@
 
-box: debian:jessie
+box: docker:latest
 
 build:
   steps:

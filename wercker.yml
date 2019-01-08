@@ -2,15 +2,14 @@
 box: docker:latest
 
 build:
-  docker: true
+  #docker: true
   steps:
     - script:
         code: |
           echo "test"
     - script:
         code: |
-          #service docker start
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
-          docker build --tag="gazf/ubuntu-docker" .
-          docker push gazf/ubuntu-docker
+          docker build --tag="$DOCKERHUB_USERNAME/ubuntu-docker:testing" .
+          docker push $DOCKERHUB_USERNAME/ubuntu-docker:testing
           

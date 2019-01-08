@@ -2,11 +2,8 @@
 box: docker:latest
 
 build:
-  #docker: true
+  docker: true
   steps:
-    - script:
-        code: |
-          echo "test"
     - script:
         code: |
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"

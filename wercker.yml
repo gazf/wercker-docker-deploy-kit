@@ -6,6 +6,8 @@ build:
   steps:
     - script:
         code: |
+          apk add --update --no-cache nodejs nodejs-npm
+          echo $(node -p "require('./package.json').version")
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
           docker build --tag="$DOCKERHUB_USERNAME/ubuntu-docker:testing" .
           docker push $DOCKERHUB_USERNAME/ubuntu-docker:testing

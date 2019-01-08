@@ -12,7 +12,7 @@ build:
         image-name: ubuntu-docker
     - script:
         code: |
-          service docker start
+          #service docker start
           docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
           docker push ubuntu-docker:latest
           

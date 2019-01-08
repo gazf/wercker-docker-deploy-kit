@@ -11,6 +11,6 @@ build:
         image-name: ubuntu-docker
     - script:
         code: |
-          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          docker push gazf/ubuntu-docker
+          docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
+          docker push ubuntu-docker:latest
           

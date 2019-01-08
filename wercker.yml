@@ -8,7 +8,7 @@ build:
         code: |
           apk add --update --no-cache nodejs nodejs-npm
           echo $(node -p "require('./package.json').version")
-          docker login --username="$DOCKERHUB_USERNAME" --password="$DOCKERHUB_PASSWORD"
+          echo $DOCKERHUB_PASSWORD | docker login --username="$DOCKERHUB_USERNAME" --password-stdin
           docker build --tag="$DOCKERHUB_USERNAME/$(node -p "require('./package.json').docker.name"):$(node -p "require('./package.json').docker.tag")" .
           docker push $DOCKERHUB_USERNAME/$(node -p "require('./package.json').docker.name"):$(node -p "require('./package.json').docker.tag")
           

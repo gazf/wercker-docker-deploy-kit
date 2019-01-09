@@ -19,10 +19,6 @@ build:
     - script:
         name: docker build
         code: docker build --tag="$DOCKER_IMAGE" .
-
-push:
-  docker: true
-  steps:
     - script:
         name: docker push
         code: docker push $DOCKER_IMAGE

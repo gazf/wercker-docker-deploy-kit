@@ -22,3 +22,10 @@ build:
     - script:
         name: docker push
         code: docker push $DOCKER_IMAGE
+        
+test:
+  docker: true
+  steps:
+    - script:
+        name: docker build
+        code: docker build .

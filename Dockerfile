@@ -1,3 +1,4 @@
-FROM alpine:latest
+FROM ubuntu:latest
 
-RUN echo "test"
+RUN curl -fsSL get.docker.com -o get-docker.sh
+RUN sudo sh get-docker.sh

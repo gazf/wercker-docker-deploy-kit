@@ -1,4 +1,4 @@
-# werkcer-docker-deploy-kit
+# wercker-docker-deploy-kit
 
 ## 1. Edit package.json
 

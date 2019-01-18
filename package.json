@@ -1,6 +1,6 @@
 {
-  "name": "werkcer-docker-deploy-kit",
-  "description": "werkcer Docker Deploy Kit",
+  "name": "wercker-docker-deploy-kit",
+  "description": "Docker Deploy Kit on Wercker",
   "version": "0.0.1",
   "docker": {
     "name": "test",

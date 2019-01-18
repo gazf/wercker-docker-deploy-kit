@@ -24,8 +24,8 @@ build:
         code: docker push $DOCKER_IMAGE
         
 test:
-  docker: true
+  box: alpine:latest
   steps:
-    - script:
-        name: docker build
-        code: docker build .
+    - internal/docker-build:
+        dockerfile: Dockerfile
+        image-name: test-image

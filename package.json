@@ -4,6 +4,6 @@
   "version": "0.0.1",
   "docker": {
     "name": "test",
-    "tag": "0.0.1"
+    "tag": "latest 0.0.2"
   }
 }

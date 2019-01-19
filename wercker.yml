@@ -18,7 +18,7 @@ build:
         image-name: $DOCKER_IMAGE_NAME
         username: $DOCKERHUB_USERNAME
         password: $DOCKERHUB_PASSWORD
-        registry: https://hub.docker.com
+        registry: https://registry.hub.docker.com
         repository: $DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME
         tag: $DOCKER_IMAGE_TAG
         

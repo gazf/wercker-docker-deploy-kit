@@ -1,7 +1,6 @@
-box: docker:latest
+box: alpine:latest
 
 build:
-  docker: true
   steps:
     - script:
         name: install nodejs
@@ -11,25 +10,20 @@ build:
         code: |
           export DOCKER_IMAGE_NAME="$(node -p "require('./package.json').docker.name")"
           export DOCKER_IMAGE_TAG="$(node -p "require('./package.json').docker.tag")"
-          export DOCKER_IMAGE="$DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
-          echo $DOCKER_IMAGE
-    - script:
-        name: docker login
-        code: echo $DOCKERHUB_PASSWORD | docker login --username="$DOCKERHUB_USERNAME" --password-stdin
-    - script:
-        name: docker build
-        code: docker build --tag="$DOCKER_IMAGE" .
-    - script:
-        name: docker push
-        code: docker push $DOCKER_IMAGE
+          echo $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - internal/docker-build:
+        dockerfile: Dockerfile
+        image-name: $DOCKER_IMAGE_NAME
+    - internal/docker-push:
+        image-name: $DOCKER_IMAGE_NAME
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+        registry: https://hub.docker.com
+        repository: $DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME
+        tag: $DOCKER_IMAGE_TAG
         
 test:
-  box: alpine:latest
   steps:
-    - script:
-        code: |
-          export DOCKER_FILE="aaa"
-          export TAG_NAME="testing"
     - internal/docker-build:
-        dockerfile: $DOCKER_FILE
-        image-name: $TAG_NAME
+        dockerfile: Dockerfile
+        image-name: test

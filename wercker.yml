@@ -26,6 +26,8 @@ build:
 test:
   box: alpine:latest
   steps:
+    - script:
+        code: export TAG_NAME="testing"
     - internal/docker-build:
         dockerfile: Dockerfile
-        image-name: test-image
+        image-name: $TAG_NAME

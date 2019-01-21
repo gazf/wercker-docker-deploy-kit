@@ -1,16 +1,14 @@
-box: alpine:latest
+box: node:alpine
 
 build:
   steps:
-    - script:
-        name: install nodejs
-        code: apk add --update --no-cache nodejs
     - script:
         name: export variables
         code: |
           export DOCKER_IMAGE_NAME="$(node -p "require('./package.json').docker.name")"
           export DOCKER_IMAGE_TAG="$(node -p "require('./package.json').docker.tag")"
-          echo $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+          echo Name: $DOCKER_IMAGE_NAME
+          echo Tags: $DOCKER_IMAGE_TAG
     - internal/docker-build:
         dockerfile: Dockerfile
         image-name: $DOCKER_IMAGE_NAME

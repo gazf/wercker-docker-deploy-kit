@@ -1,11 +1,12 @@
 # wercker-docker-deploy-kit
+Docker deploy kit on Wercker
 
 ## 1. Edit package.json
 
 |Key|Description|
 |---|---|
 |docker.name|Docker image name|
-|docker.tag|Docker image tag|
+|docker.tag|A space- or comma-separated list of Docker tags|
 
 ## 2. Add Wercker Envrionment
 
